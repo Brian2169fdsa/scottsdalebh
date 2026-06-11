@@ -1,0 +1,53 @@
+/* ============================================================
+   SBHG — Color Tokens
+   Navy is the canvas, gold is the jewelry. ~80% navy/neutral,
+   15% white space, 5% gold. Gold never used for body text.
+   ============================================================ */
+:root {
+  /* --- Navy (primary surfaces) --- */
+  --navy-900: #0E1B33; /* page-dark sections, footer, hero overlays */
+  --navy-800: #13234A; /* primary surface navy, nav bar, cards on dark */
+  --navy-700: #1B2F5C; /* hover states on navy, secondary dark surfaces */
+
+  /* --- Gold (accent / jewelry) --- */
+  --gold-500: #C9A24B; /* primary gold — heading accents, icons, rules, buttons */
+  --gold-300: #E3C778; /* gradient highlight, hover gold */
+  --gold-700: #A87F2F; /* gradient shadow, pressed states */
+
+  /* --- Neutrals --- */
+  --white:    #FFFFFF;
+  --cream-50: #F8F6F1; /* warm light section background (alternating) */
+  --gray-200: #E2E4E9; /* borders, dividers on light */
+  --gray-600: #5A6373; /* body text on light backgrounds */
+  --ink-900:  #1A2233; /* headings on light backgrounds */
+
+  /* --- Signature gradients --- */
+  --grad-gold: linear-gradient(135deg, #A87F2F 0%, #E3C778 45%, #C9A24B 100%); /* @kind color */
+  --grad-navy-fade: linear-gradient(180deg, rgba(14,27,51,0.92) 0%, rgba(14,27,51,0.65) 100%); /* @kind color */
+
+  /* ---------- Semantic aliases ---------- */
+  /* Surfaces */
+  --surface-dark:        var(--navy-900);
+  --surface-dark-raised: var(--navy-800);
+  --surface-dark-hover:  var(--navy-700);
+  --surface-light:       var(--white);
+  --surface-warm:        var(--cream-50);
+  --surface-card-light:  var(--white);
+  --surface-card-warm:   var(--cream-50);
+
+  /* Text */
+  --text-on-dark:        var(--white);
+  --text-on-dark-muted:  rgba(255,255,255,0.72);
+  --text-heading:        var(--ink-900);  /* headings on light */
+  --text-body:           var(--gray-600); /* body on light */
+  --text-accent:         var(--gold-500); /* caps labels only, never paragraphs */
+
+  /* Lines & borders */
+  --border-light:        var(--gray-200);
+  --border-gold:         var(--gold-500);
+
+  /* Accent */
+  --accent:              var(--gold-500);
+  --accent-hover:        var(--gold-300);
+  --accent-pressed:      var(--gold-700);
+}

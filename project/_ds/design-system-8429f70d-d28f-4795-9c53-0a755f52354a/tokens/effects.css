@@ -1,0 +1,31 @@
+/* ============================================================
+   SBHG — Effects: shadows, borders, motion
+   No pure black. No drop shadows on dark sections. On light,
+   a single soft shadow token only. Reveals: 24px rise + fade.
+   ============================================================ */
+:root {
+  /* The ONLY shadow — light sections only */
+  --shadow-soft: 0 8px 24px rgba(14, 27, 51, 0.08);
+
+  /* Gold keyline frame (photos on navy) */
+  --keyline-w: 3px;
+
+  /* Outlined icon circle border */
+  --icon-outline-w: 1.5px;
+
+  /* Watermark cross opacity */
+  --watermark-opacity: 0.07; /* @kind other */
+
+  /* Motion */
+  --reveal-rise: 24px;
+  --reveal-dur: 450ms; /* @kind other */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --transition-btn: 150ms ease; /* @kind other */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --reveal-rise: 0px;
+    --reveal-dur: 0.01ms; /* @kind other */
+  }
+}

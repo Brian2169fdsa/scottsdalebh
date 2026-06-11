@@ -1,0 +1,7 @@
+/* ============================================================
+   SBHG — Webfonts
+   Display/Headings: Montserrat (700, 800) — UPPERCASE, tracked.
+   Body: Inter (400, 500).
+   Loaded from Google Fonts CDN. @import must precede other rules.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap');

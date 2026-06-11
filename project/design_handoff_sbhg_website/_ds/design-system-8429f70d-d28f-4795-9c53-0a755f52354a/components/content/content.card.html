@@ -1,0 +1,73 @@
+<!-- @dsCard group="Components" viewport="700x560" name="Content — Stat, Value, Testimonial, Program" subtitle="Stat band unit, value row item, testimonial card, level-of-care card." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-body); }
+  .dark { background: var(--navy-900); padding: 34px 36px; }
+  .light { background: var(--cream-50); padding: 34px 36px; }
+  .statrow { display: flex; align-items: stretch; gap: 32px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script>
+    (function () {
+      var injected = 0;
+      (function go() {
+        if (window.DesignSystem_8429f7) return;
+        var s = document.createElement('script');
+        s.src = '../../_ds_bundle.js?r=' + Date.now();
+        s.onload = function () { if (!window.DesignSystem_8429f7 && injected < 6) setTimeout(go, 150); };
+        s.onerror = function () { if (injected++ < 6) setTimeout(go, 200); };
+        document.head.appendChild(s);
+      })();
+      window.dsWhenReady = function (cb) {
+        (function p(n) {
+          if (window.DesignSystem_8429f7) return cb(window.DesignSystem_8429f7);
+          if (n <= 0) { console.error('SBHG: bundle unavailable'); return; }
+          setTimeout(function () { p(n - 1); }, 50);
+        })(160);
+      };
+    })();
+  </script>
+  <script type="text/babel" data-presets="react">
+    dsWhenReady(function (DS) {
+    const { StatBlock, ValueItem, Testimonial, ProgramCard } = DS;
+    const Ico = ({ name, c }) => <i data-lucide={name} style={{ width: 30, height: 30, strokeWidth: 1.5, color: c }}></i>;
+    function Demo() {
+      return (
+        <div>
+          <div className="dark">
+            <div className="statrow">
+              <StatBlock value="1 in 5" statement="U.S. adults experience mental illness in a given year." source="Source: NIMH, 2023" />
+              <div className="sbhg-vrule" />
+              <ValueItem icon={<Ico name="shield-check" />} title="Integrity">We do the right thing.</ValueItem>
+              <div className="sbhg-vrule" />
+              <ValueItem icon={<Ico name="heart-handshake" />} title="Compassion">We care deeply.</ValueItem>
+            </div>
+          </div>
+          <div className="light">
+            <div className="grid2">
+              <Testimonial rating={5} name="Marcus R." detail="Alumni, 2024"
+                quote="The team met me exactly where I was. For the first time, I felt genuinely heard." />
+              <ProgramCard icon={<Ico name="sun" c="var(--gold-700)" />} badge="PHP" title="Partial Hospitalization" href="#">
+                Structured daytime treatment with the support of returning home each evening.
+              </ProgramCard>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+    });
+  </script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" onload="lucide.createIcons()"></script>
+</body>
+</html>
