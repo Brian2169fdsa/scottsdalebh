@@ -1,0 +1,10 @@
+@import './ds/tokens/fonts.css';
+@import './ds/tokens/colors.css';
+@import './ds/tokens/typography.css';
+@import './ds/tokens/spacing.css';
+@import './ds/tokens/effects.css';
+@import './ds/tokens/base.css';
+
+html { overflow-y: scroll; scrollbar-gutter: stable; }
+html, body { margin: 0; }
+body { background: var(--navy-900); }

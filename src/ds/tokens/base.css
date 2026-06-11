@@ -1,0 +1,97 @@
+/* ============================================================
+   SBHG — Base elements & signature utilities
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--body);
+  line-height: var(--lh-body);
+  color: var(--text-body);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-heading);
+  line-height: var(--lh-heading);
+  margin: 0;
+}
+
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; }
+
+/* ---------- Layout ---------- */
+.sbhg-container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.sbhg-section { padding-block: var(--section-pad-y); }
+
+/* ---------- Eyebrow: gold caps label ---------- */
+.sbhg-eyebrow {
+  font-family: var(--font-display);
+  font-weight: var(--fw-label);
+  font-size: var(--eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--gold-500);
+  margin: 0;
+}
+
+/* ---------- Signature gold underline rule under H2 ---------- */
+.sbhg-rule {
+  display: block;
+  width: var(--rule-w);
+  height: var(--rule-h);
+  border: 0;
+  border-radius: 2px;
+  background: var(--grad-gold);
+  margin: var(--space-4) 0 0;
+}
+.sbhg-rule--center { margin-inline: auto; }
+
+/* H2 with gold rule helper */
+.sbhg-h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-display);
+  font-size: var(--display-lg);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  color: var(--text-heading);
+}
+.sbhg-h2--on-dark { color: var(--white); }
+
+/* ---------- Gold keyline photo frame (on navy) ---------- */
+.sbhg-keyline {
+  border-radius: var(--radius-card);
+  padding: var(--keyline-w);
+  background: var(--grad-gold);
+}
+.sbhg-keyline > img,
+.sbhg-keyline > * {
+  display: block;
+  width: 100%;
+  border-radius: calc(var(--radius-card) - var(--keyline-w));
+}
+
+/* ---------- Gold vertical divider ---------- */
+.sbhg-vrule {
+  width: 1px;
+  align-self: stretch;
+  background: linear-gradient(180deg, transparent, var(--gold-500) 18%, var(--gold-500) 82%, transparent);
+}
+
+/* ---------- Scroll-reveal (sections only) ---------- */
+.sbhg-reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-rise));
+  transition: opacity var(--reveal-dur) var(--ease-out),
+              transform var(--reveal-dur) var(--ease-out);
+}
+.sbhg-reveal.is-visible { opacity: 1; transform: none; }
