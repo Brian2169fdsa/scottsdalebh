@@ -4,7 +4,7 @@ import React from 'react';
  * Testimonial card: gold quote mark, quote, 5-star row, navy initial avatar +
  * name. White card placed on a navy section.
  */
-export function Testimonial({ quote, name, detail, rating = 5, style, ...rest }) {
+export function Testimonial({ quote, name, detail, rating = 5, photo, style, ...rest }) {
   const initial = (name || '?').trim().charAt(0).toUpperCase();
   return (
     <div
@@ -40,12 +40,21 @@ export function Testimonial({ quote, name, detail, rating = 5, style, ...rest })
         ))}
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 4 }}>
-        <span style={{
-          width: 44, height: 44, borderRadius: '50%',
-          background: 'var(--navy-800)', color: 'var(--gold-300)',
-          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-          fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 18,
-        }}>{initial}</span>
+        {photo ? (
+          <img
+            src={photo}
+            alt={name}
+            style={{ width: 56, height: 56, borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '2px solid var(--gold-500)' }}
+          />
+        ) : (
+          <span style={{
+            width: 56, height: 56, borderRadius: '50%',
+            background: 'var(--navy-800)', color: 'var(--gold-300)',
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+            fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20,
+            flexShrink: 0,
+          }}>{initial}</span>
+        )}
         <div>
           <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 15, color: 'var(--ink-900)' }}>{name}</div>
           {detail && <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--gray-600)' }}>{detail}</div>}
