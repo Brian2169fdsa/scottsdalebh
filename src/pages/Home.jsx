@@ -10,7 +10,7 @@ const TEL = 'tel:+14805550100';
 
 function HomeHero() {
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', contain: 'strict', height: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--navy-900)', backgroundImage: 'url("/assets/hero-bg.jpg")', backgroundSize: 'cover', backgroundPosition: 'center 30%', backgroundRepeat: 'no-repeat' }}>
+    <section className="sbhg-home-hero" style={{ position: 'relative', overflow: 'hidden', contain: 'strict', height: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--navy-900)', backgroundImage: 'url("/assets/hero-bg.jpg")', backgroundSize: 'cover', backgroundPosition: 'center 30%', backgroundRepeat: 'no-repeat' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(14,27,51,0.68) 0%, rgba(14,27,51,0.42) 100%)' }} />
       <Watermark />
       <div className="sbhg-container" style={{ position: 'relative', padding: '0 24px', display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 820, textAlign: 'center', alignItems: 'center' }}>
@@ -34,7 +34,7 @@ function HomeHero() {
 function StatBand() {
   return (
     <section style={{ background: 'var(--navy-900)', padding: '76px 0' }}>
-      <div className="sbhg-container" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', alignItems: 'center' }}>
+      <div className="sbhg-container sbhg-stat-band" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', alignItems: 'center' }}>
         <div style={{ padding: '0 36px' }}><StatBlock value="1 in 5" statement="U.S. adults experience mental illness in a given year." source="Source: NIMH, 2023" /></div>
         <div style={{ padding: '0 36px', borderLeft: '1px solid rgba(201,162,75,.35)', borderRight: '1px solid rgba(201,162,75,.35)' }}><StatBlock value="48.7M" statement="Americans lived with a substance use disorder last year." source="Source: SAMHSA NSDUH, 2022" /></div>
         <div style={{ padding: '0 36px' }}><StatBlock value="24/7" statement="Admissions support — there is no wrong time to reach out." source="Confidential & always available" /></div>
@@ -62,9 +62,9 @@ function IntroBlock() {
 
 function FullBleedImage() {
   return (
-    <section style={{ position: 'relative', width: '100%', height: 900, overflow: 'hidden', contain: 'strict', backgroundColor: 'var(--navy-900)', backgroundImage: 'url("/assets/mh-entrance.jpg")', backgroundSize: 'cover', backgroundPosition: 'center 40%', backgroundRepeat: 'no-repeat' }} aria-label="Recovery statistics">
+    <section className="sbhg-fullbleed" style={{ position: 'relative', width: '100%', height: 900, overflow: 'hidden', contain: 'strict', backgroundColor: 'var(--navy-900)', backgroundImage: 'url("/assets/mh-entrance.jpg")', backgroundSize: 'cover', backgroundPosition: 'center 40%', backgroundRepeat: 'no-repeat' }} aria-label="Recovery statistics">
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(14,27,51,.78) 0%, rgba(14,27,51,.68) 42%, rgba(14,27,51,.4) 100%)' }} />
-      <div className="sbhg-container" style={{ position: 'relative', height: '100%', display: 'grid', gridTemplateColumns: '1.4fr 0.6fr', gap: 72, alignItems: 'center' }}>
+      <div className="sbhg-container sbhg-fullbleed-grid" style={{ position: 'relative', height: '100%', display: 'grid', gridTemplateColumns: '1.4fr 0.6fr', gap: 72, alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 700 }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(28px,2.9vw,42px)', lineHeight: 1.16, textTransform: 'uppercase', letterSpacing: '.05em', color: '#fff', margin: 0 }}>
             Recovery isn't rare. 73% of adults who've faced a substance use problem say they're in recovery — or recovered.
@@ -98,7 +98,7 @@ function FullBleedImage() {
 function ValuesRow() {
   return (
     <section style={{ background: 'var(--navy-900)', padding: '80px 0' }}>
-      <div className="sbhg-container" style={{ display: 'flex', alignItems: 'stretch', justifyContent: 'center' }}>
+      <div className="sbhg-container sbhg-values-row" style={{ display: 'flex', alignItems: 'stretch', justifyContent: 'center' }}>
         <ValueItem icon={<Ico name="shield-check" size={30} c="var(--gold-300)" />} title="Integrity">We do the right thing, even when no one is watching.</ValueItem>
         <div className="sbhg-vrule" />
         <ValueItem icon={<Ico name="heart-handshake" size={30} c="var(--gold-300)" />} title="Compassion">We care deeply about every person who walks through our doors.</ValueItem>
@@ -120,7 +120,7 @@ function ProgramsHome() {
     <section className="sbhg-section" style={{ background: 'var(--cream-50)' }}>
       <div className="sbhg-container">
         <SectionHeading eyebrow="Levels of care" align="center">Programs built around your life</SectionHeading>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 44 }}>
+        <div className="sbhg-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 44 }}>
           {progs.map((p) => (
             <ProgramCard key={p.badge} badge={p.badge} title={p.title} href={p.href} icon={<Ico name={p.icon} size={28} c="var(--gold-700)" />}>{p.body}</ProgramCard>
           ))}

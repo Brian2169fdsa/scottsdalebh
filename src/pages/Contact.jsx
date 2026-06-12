@@ -18,7 +18,7 @@ function ContactSection() {
   const [sent, setSent] = useState(false);
   return (
     <section className="sbhg-section" style={{ background: 'var(--white)' }}>
-      <div className="sbhg-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: 64, alignItems: 'start' }}>
+      <div className="sbhg-container sbhg-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: 64, alignItems: 'start' }}>
         <div>
           <SectionHeading eyebrow="Get in touch">We're here whenever you're ready</SectionHeading>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', lineHeight: 1.7, color: 'var(--gray-600)', margin: '20px 0 32px' }}>
@@ -45,7 +45,7 @@ function ContactSection() {
               <p style={{ fontFamily: 'var(--font-body)', color: 'var(--gray-600)', margin: 0 }}>We'll reach out within one business day.</p>
             </div>
           ) : (
-            <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
+            <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="sbhg-contact-form" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
               <Input label="First Name" placeholder="Jane" required />
               <Input label="Last Name" placeholder="Doe" required />
               <Input label="Phone" type="tel" placeholder="(480) 555-0102" required />
@@ -90,7 +90,7 @@ function Gallery() {
     <section className="sbhg-section" style={{ background: 'var(--cream-50)' }}>
       <div className="sbhg-container">
         <SectionHeading eyebrow="Our space" align="center">A calm, dignified place to heal</SectionHeading>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginTop: 44 }}>
+        <div className="sbhg-gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginTop: 44 }}>
           {['calm', 'sand', 'dusk', 'canyon'].map((tone, i) => (
             <Slot key={i} id={`gallery-${i}`} h={200} ratio="3 / 4" tone={tone} placeholder="Drop a facility photo" radius={16} />
           ))}

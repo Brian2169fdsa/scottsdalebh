@@ -19,7 +19,7 @@ function ProgramOverview() {
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', lineHeight: 1.7, color: 'var(--gray-600)', textAlign: 'center', maxWidth: 680, margin: '20px auto 0' }}>
           As your needs change, your care steps down with you — never an abrupt ending, always a next step.
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 22, marginTop: 48 }}>
+        <div className="sbhg-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 22, marginTop: 48 }}>
           {progs.map((p) => (
             <ProgramCard key={p.title} badge={p.badge} title={p.title} href={p.href} icon={<Ico name={p.icon} size={26} c="var(--gold-700)" />}>{p.body}</ProgramCard>
           ))}
@@ -67,7 +67,7 @@ function OutpatientCards() {
     ['OP', 'Standard Outpatient', 'Four to six hours a week of individual and group therapy. Ongoing support as momentum becomes routine.'],
   ];
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 22, marginTop: 40 }}>
+    <div className="sbhg-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 22, marginTop: 40 }}>
       {cards.map(([badge, title, body]) => (
         <div key={badge} style={{ background: 'var(--white)', border: '1px solid var(--gray-200)', borderRadius: 'var(--radius-card)', padding: 30, boxShadow: 'var(--shadow-soft)', display: 'flex', flexDirection: 'column', gap: 12 }}>
           <Badge variant="solid-gold">{badge}</Badge>

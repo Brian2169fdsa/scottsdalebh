@@ -139,33 +139,178 @@ function MegaPanel({ cols }) {
 
 export function Header({ active }) {
   const [open, setOpen] = useState(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState(null);
   const location = useLocation();
 
-  useEffect(() => { setOpen(null); }, [location.pathname]);
+  useEffect(() => { setOpen(null); setDrawerOpen(false); setMobileExpanded(null); }, [location.pathname]);
+
+  // Prevent body scroll when drawer is open
+  useEffect(() => {
+    document.body.style.overflow = drawerOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [drawerOpen]);
+
+  const closeDrawer = () => { setDrawerOpen(false); setMobileExpanded(null); };
 
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'var(--navy-800)', borderBottom: '1px solid rgba(255,255,255,.06)' }}
-      onMouseLeave={() => setOpen(null)}>
-      <div className="sbhg-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', height: 80 }}>
-        <Link to="/" style={{ display: 'inline-flex', textDecoration: 'none' }}><BadgeMark markSrc={MARK} size={42} /></Link>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+    <>
+      <style>{`
+        .sbhg-nav-desktop { display: flex; }
+        .sbhg-verify-btn { display: inline-flex; }
+        .sbhg-hamburger { display: none; }
+        @media (max-width: 768px) {
+          .sbhg-nav-desktop { display: none !important; }
+          .sbhg-verify-btn { display: none !important; }
+          .sbhg-hamburger { display: inline-flex !important; }
+        }
+      `}</style>
+      <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'var(--navy-800)', borderBottom: '1px solid rgba(255,255,255,.06)' }}
+        onMouseLeave={() => setOpen(null)}>
+        <div className="sbhg-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', height: 80 }}>
+          <Link to="/" style={{ display: 'inline-flex', textDecoration: 'none' }}><BadgeMark markSrc={MARK} size={42} /></Link>
+
+          {/* Desktop nav */}
+          <nav className="sbhg-nav-desktop" style={{ alignItems: 'center', gap: 2 }}>
+            {NAV.map((n) => {
+              const isActive = active === n.label;
+              return (
+                <div key={n.label} onMouseEnter={() => setOpen(n.cols ? n.label : null)}>
+                  <Link to={n.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none', color: isActive ? 'var(--gold-300)' : 'var(--white)', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 13.5, letterSpacing: '.03em', padding: '28px 13px', borderBottom: isActive ? '2px solid var(--gold-500)' : '2px solid transparent' }}>
+                    {n.label}{n.cols && <Ico name="chevron-down" size={14} c="var(--gold-300)" />}
+                  </Link>
+                </div>
+              );
+            })}
+          </nav>
+
+          {/* Desktop CTA */}
+          <span className="sbhg-verify-btn">
+            <Button variant="primary" size="sm" href="#verify">Verify Insurance</Button>
+          </span>
+
+          {/* Hamburger button — mobile only */}
+          <button
+            className="sbhg-hamburger"
+            aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setDrawerOpen((v) => !v)}
+            style={{ alignItems: 'center', justifyContent: 'center', width: 44, height: 44, background: 'none', border: '1px solid rgba(201,162,75,.4)', borderRadius: 8, cursor: 'pointer', color: 'var(--gold-300)' }}
+          >
+            <Ico name={drawerOpen ? 'x' : 'menu'} size={22} c="var(--gold-300)" />
+          </button>
+        </div>
+
+        {/* Desktop mega-panel */}
+        {open && NAV.find((n) => n.label === open)?.cols && (
+          <MegaPanel cols={NAV.find((n) => n.label === open).cols} />
+        )}
+      </header>
+
+      {/* Mobile drawer overlay */}
+      {drawerOpen && (
+        <div
+          style={{ position: 'fixed', inset: 0, zIndex: 49, background: 'rgba(0,0,0,.45)' }}
+          onClick={closeDrawer}
+        />
+      )}
+
+      {/* Mobile drawer */}
+      <div style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
+        background: '#0E1B33',
+        transform: drawerOpen ? 'translateY(0)' : 'translateY(-100%)',
+        transition: 'transform .3s cubic-bezier(.4,0,.2,1)',
+        maxHeight: '100dvh',
+        overflowY: 'auto',
+        boxShadow: '0 12px 48px rgba(0,0,0,.6)',
+      }}>
+        {/* Drawer header */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', height: 72, borderBottom: '1px solid rgba(201,162,75,.2)' }}>
+          <Link to="/" onClick={closeDrawer} style={{ display: 'inline-flex', textDecoration: 'none' }}>
+            <BadgeMark markSrc={MARK} size={38} />
+          </Link>
+          <button
+            aria-label="Close menu"
+            onClick={closeDrawer}
+            style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, background: 'none', border: '1px solid rgba(201,162,75,.4)', borderRadius: 8, cursor: 'pointer' }}
+          >
+            <Ico name="x" size={20} c="var(--gold-300)" />
+          </button>
+        </div>
+
+        {/* Drawer nav items */}
+        <nav>
           {NAV.map((n) => {
-            const isActive = active === n.label;
+            const isExpanded = mobileExpanded === n.label;
             return (
-              <div key={n.label} onMouseEnter={() => setOpen(n.cols ? n.label : null)}>
-                <Link to={n.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none', color: isActive ? 'var(--gold-300)' : 'var(--white)', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 13.5, letterSpacing: '.03em', padding: '28px 13px', borderBottom: isActive ? '2px solid var(--gold-500)' : '2px solid transparent' }}>
-                  {n.label}{n.cols && <Ico name="chevron-down" size={14} c="var(--gold-300)" />}
-                </Link>
+              <div key={n.label} style={{ borderBottom: '1px solid rgba(201,162,75,.15)' }}>
+                {n.cols ? (
+                  /* Parent item with sub-links — accordion */
+                  <>
+                    <button
+                      onClick={() => setMobileExpanded(isExpanded ? null : n.label)}
+                      style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 20px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 16, letterSpacing: '.04em', textTransform: 'uppercase', color: 'var(--gold-300)' }}
+                    >
+                      {n.label}
+                      <Ico name={isExpanded ? 'chevron-up' : 'chevron-down'} size={16} c="var(--gold-300)" />
+                    </button>
+                    {isExpanded && (
+                      <div style={{ background: 'rgba(0,0,0,.25)', paddingBottom: 8 }}>
+                        {/* Link to the main page itself */}
+                        <Link
+                          to={n.href}
+                          onClick={closeDrawer}
+                          style={{ display: 'block', padding: '11px 32px', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 13, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--gold-500)', textDecoration: 'none' }}
+                        >
+                          View All — {n.label}
+                        </Link>
+                        {n.cols.map((col) => (
+                          <React.Fragment key={col.h}>
+                            <div style={{ padding: '10px 32px 4px', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(201,162,75,.6)' }}>{col.h}</div>
+                            {col.items.map(([label, href], j) => (
+                              <Link
+                                key={label + j}
+                                to={href}
+                                onClick={closeDrawer}
+                                style={{ display: 'block', padding: '10px 32px', fontFamily: 'var(--font-body)', fontSize: 15, color: 'rgba(255,255,255,.82)', textDecoration: 'none', borderLeft: '2px solid transparent' }}
+                                onMouseEnter={(e) => { e.currentTarget.style.borderLeftColor = 'var(--gold-500)'; e.currentTarget.style.color = '#fff'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.borderLeftColor = 'transparent'; e.currentTarget.style.color = 'rgba(255,255,255,.82)'; }}
+                              >
+                                {label}
+                              </Link>
+                            ))}
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  /* Simple link */
+                  <Link
+                    to={n.href}
+                    onClick={closeDrawer}
+                    style={{ display: 'block', padding: '18px 20px', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 16, letterSpacing: '.04em', textTransform: 'uppercase', color: 'var(--gold-300)', textDecoration: 'none' }}
+                  >
+                    {n.label}
+                  </Link>
+                )}
               </div>
             );
           })}
         </nav>
-        <Button variant="primary" size="sm" href="#verify">Verify Insurance</Button>
+
+        {/* Drawer CTA */}
+        <div style={{ padding: '24px 20px 32px' }}>
+          <a
+            href="#verify"
+            onClick={closeDrawer}
+            style={{ display: 'block', width: '100%', textAlign: 'center', padding: '16px 24px', background: 'var(--gold-500)', color: '#0E1B33', fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 15, letterSpacing: '.06em', textTransform: 'uppercase', textDecoration: 'none', borderRadius: 8 }}
+          >
+            Verify Insurance
+          </a>
+        </div>
       </div>
-      {open && NAV.find((n) => n.label === open)?.cols && (
-        <MegaPanel cols={NAV.find((n) => n.label === open).cols} />
-      )}
-    </header>
+    </>
   );
 }
 
@@ -226,7 +371,7 @@ export function CtaStrip() {
   ];
   return (
     <section style={{ background: 'var(--navy-900)' }}>
-      <div className="sbhg-container" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
+      <div className="sbhg-container sbhg-cta-strip" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
         {actions.map((a, i) => (
           <a key={a.label} href={a.href} style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '26px 28px', textDecoration: 'none', borderLeft: i ? '1px solid rgba(201,162,75,.22)' : 'none' }}
             onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,.03)'; }}
@@ -272,7 +417,7 @@ export function SplitFeature({ eyebrow, title, body, bullets = [], cta, ctaHref 
   );
   return (
     <section id={id} className="sbhg-section" style={{ background: bg }}>
-      <div className="sbhg-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'stretch' }}>
+      <div className="sbhg-container sbhg-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'stretch' }}>
         {flip ? <>{photo}{text}</> : <>{text}{photo}</>}
       </div>
     </section>
@@ -396,7 +541,7 @@ export function Testimonials({ data, eyebrow = 'In their words', title = 'Storie
     <section style={{ background: 'var(--navy-900)', padding: '92px 0' }}>
       <div className="sbhg-container">
         <SectionHeading eyebrow={eyebrow} align="center" onDark>{title}</SectionHeading>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, marginTop: 48 }}>
+        <div className="sbhg-testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, marginTop: 48 }}>
           {items.map((d) => <Testimonial key={d.name} {...d} rating={5} />)}
         </div>
       </div>
@@ -426,7 +571,7 @@ export function VerifyForm() {
   const [sent, setSent] = useState(false);
   return (
     <section id="verify" style={{ background: 'var(--navy-900)', padding: '96px 0' }}>
-      <div className="sbhg-container" style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 64, alignItems: 'center' }}>
+      <div className="sbhg-container sbhg-verify-grid" style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 64, alignItems: 'center' }}>
         <div>
           <SectionHeading eyebrow="No obligation" onDark>Verify your insurance</SectionHeading>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', color: 'rgba(255,255,255,.78)', lineHeight: 1.7, marginTop: 20 }}>
@@ -444,7 +589,7 @@ export function VerifyForm() {
               <p style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,.75)', margin: 0 }}>We'll be in touch within one business day.</p>
             </div>
           ) : (
-            <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
+            <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="sbhg-verify-form" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
               <Input label="Full Name" placeholder="Jane Doe" required onDark />
               <Input label="Phone" type="tel" placeholder="(480) 555-0102" required onDark />
               <Input label="Email" type="email" placeholder="jane@email.com" onDark />
@@ -476,7 +621,7 @@ export function Footer() {
   return (
     <>
       <footer style={{ background: 'var(--navy-900)', padding: '76px 0 40px' }}>
-        <div className="sbhg-container" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 40 }}>
+        <div className="sbhg-container sbhg-footer-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 40 }}>
           <div>
             <BadgeMark markSrc={MARK} size={44} />
             <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'rgba(255,255,255,.7)', lineHeight: 1.7, marginTop: 18, maxWidth: 300 }}>

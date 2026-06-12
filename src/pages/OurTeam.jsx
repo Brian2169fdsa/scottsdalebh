@@ -45,7 +45,7 @@ function TeamGrid() {
       <div className="sbhg-container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 28 }}>
           {TEAM.map((m) => (
-            <article key={m.id} style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: 24, background: 'var(--white)', border: '1px solid var(--gray-200)', borderRadius: 'var(--radius-card)', padding: 24, boxShadow: 'var(--shadow-soft)' }}>
+            <article key={m.id} className="sbhg-team-card" style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: 24, background: 'var(--white)', border: '1px solid var(--gray-200)', borderRadius: 'var(--radius-card)', padding: 24, boxShadow: 'var(--shadow-soft)' }}>
               <div style={{ width: 160 }}>
                 <Slot id={`team-${m.id}`} h={180} ratio="1 / 1" tone="sand" placeholder="Drop headshot" radius={16} />
               </div>
