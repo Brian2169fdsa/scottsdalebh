@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Ico } from './Ico';
 
-const PHONE = '(480) 555‑0100';
+const PHONE = '(480) 555-0100';
 const TEL = 'tel:+14805550100';
 
 const SUGGESTIONS = [
@@ -18,10 +18,245 @@ function TypingDots() {
         <span key={i} style={{
           width: 7, height: 7, borderRadius: '50%',
           background: 'var(--gold-500)', opacity: 0.7,
-          animation: `sbhg-bounce 1.2s ease-in-out infinite`,
+          animation: 'sbhg-bounce 1.2s ease-in-out infinite',
           animationDelay: `${i * 0.18}s`,
         }} />
       ))}
+    </div>
+  );
+}
+
+function CtaCard({ onEmail, onCallback }) {
+  const [mode, setMode] = useState('buttons'); // buttons | email | callback | done
+  const [form, setForm] = useState({ name: '', email: '', phone: '' });
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
+
+  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const submit = async (type) => {
+    setError('');
+    setSending(true);
+    try {
+      const payload = type === 'email'
+        ? { type, name: form.name, email: form.email }
+        : { type, name: form.name, phone: form.phone };
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('Request failed');
+      setMode('done');
+      if (type === 'email') onEmail?.();
+      else onCallback?.();
+    } catch {
+      setError('Something went wrong. Please call us directly.');
+    } finally {
+      setSending(false);
+    }
+  };
+
+  const cardStyle = {
+    background: 'rgba(201,162,75,.08)',
+    border: '1px solid rgba(201,162,75,.3)',
+    borderRadius: 14,
+    padding: '14px 16px',
+    marginTop: 4,
+    animation: 'sbhg-fadein .22s ease-out',
+  };
+
+  const labelStyle = {
+    display: 'block',
+    fontFamily: 'var(--font-body)',
+    fontSize: 11.5,
+    color: 'rgba(255,255,255,.5)',
+    marginBottom: 4,
+    letterSpacing: '.04em',
+    textTransform: 'uppercase',
+  };
+
+  const inputStyle = {
+    width: '100%',
+    background: 'rgba(255,255,255,.07)',
+    border: '1px solid rgba(201,162,75,.22)',
+    borderRadius: 8,
+    padding: '8px 11px',
+    fontFamily: 'var(--font-body)',
+    fontSize: 14,
+    color: '#fff',
+    outline: 'none',
+    boxSizing: 'border-box',
+  };
+
+  const btnPrimary = {
+    flex: 1,
+    background: 'var(--gold-500)',
+    border: 'none',
+    borderRadius: 8,
+    padding: '9px 0',
+    fontFamily: 'var(--font-display)',
+    fontWeight: 700,
+    fontSize: 13,
+    color: '#0E1B33',
+    cursor: 'pointer',
+    letterSpacing: '.02em',
+  };
+
+  const btnGhost = {
+    background: 'transparent',
+    border: '1px solid rgba(255,255,255,.18)',
+    borderRadius: 8,
+    padding: '9px 14px',
+    fontFamily: 'var(--font-body)',
+    fontSize: 13,
+    color: 'rgba(255,255,255,.5)',
+    cursor: 'pointer',
+  };
+
+  if (mode === 'done') {
+    return (
+      <div style={cardStyle}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{
+            width: 32, height: 32, borderRadius: '50%',
+            background: 'rgba(72,187,120,.15)',
+            border: '1px solid rgba(72,187,120,.4)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+          }}>
+            <Ico name="check" size={16} c="#48BB78" />
+          </div>
+          <div>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 14, color: '#fff' }}>
+              Request received!
+            </div>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,.55)', marginTop: 2 }}>
+              Our team will be in touch shortly.
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (mode === 'email') {
+    const valid = form.name.trim() && form.email.includes('@');
+    return (
+      <div style={cardStyle}>
+        <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 14, color: 'var(--gold-300)', marginBottom: 12 }}>
+          We'll email you back
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <div>
+            <label style={labelStyle}>Your name</label>
+            <input style={inputStyle} value={form.name} onChange={set('name')} placeholder="First name" autoFocus />
+          </div>
+          <div>
+            <label style={labelStyle}>Email address</label>
+            <input style={inputStyle} type="email" value={form.email} onChange={set('email')} placeholder="you@example.com" />
+          </div>
+          {error && <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: '#FC8181' }}>{error}</div>}
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button style={btnGhost} onClick={() => setMode('buttons')}>Back</button>
+            <button
+              style={{ ...btnPrimary, opacity: valid && !sending ? 1 : 0.45, cursor: valid && !sending ? 'pointer' : 'not-allowed' }}
+              disabled={!valid || sending}
+              onClick={() => submit('email')}
+            >
+              {sending ? 'Sending...' : 'Send Request'}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (mode === 'callback') {
+    const valid = form.name.trim() && form.phone.trim().length >= 7;
+    return (
+      <div style={cardStyle}>
+        <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 14, color: 'var(--gold-300)', marginBottom: 12 }}>
+          We'll call you back
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <div>
+            <label style={labelStyle}>Your name</label>
+            <input style={inputStyle} value={form.name} onChange={set('name')} placeholder="First name" autoFocus />
+          </div>
+          <div>
+            <label style={labelStyle}>Phone number</label>
+            <input style={inputStyle} type="tel" value={form.phone} onChange={set('phone')} placeholder="(555) 555-0100" />
+          </div>
+          {error && <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: '#FC8181' }}>{error}</div>}
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button style={btnGhost} onClick={() => setMode('buttons')}>Back</button>
+            <button
+              style={{ ...btnPrimary, opacity: valid && !sending ? 1 : 0.45, cursor: valid && !sending ? 'pointer' : 'not-allowed' }}
+              disabled={!valid || sending}
+              onClick={() => submit('callback')}
+            >
+              {sending ? 'Sending...' : 'Request Callback'}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Default: buttons
+  const ctaBtn = (icon, label, onClick, gold = false) => (
+    <button
+      onClick={onClick}
+      style={{
+        display: 'flex', alignItems: 'center', gap: 8,
+        width: '100%',
+        background: gold ? 'var(--gold-500)' : 'rgba(255,255,255,.07)',
+        border: gold ? 'none' : '1px solid rgba(201,162,75,.28)',
+        borderRadius: 10, padding: '11px 14px',
+        fontFamily: 'var(--font-display)', fontWeight: 700,
+        fontSize: 13.5, letterSpacing: '.02em',
+        color: gold ? '#0E1B33' : 'var(--gold-300)',
+        cursor: 'pointer', textDecoration: 'none',
+        transition: 'background .12s',
+      }}
+      onMouseEnter={(e) => { e.currentTarget.style.background = gold ? 'var(--gold-400,#b8912f)' : 'rgba(201,162,75,.18)'; }}
+      onMouseLeave={(e) => { e.currentTarget.style.background = gold ? 'var(--gold-500)' : 'rgba(255,255,255,.07)'; }}
+    >
+      <Ico name={icon} size={16} c={gold ? '#0E1B33' : 'var(--gold-400)'} />
+      {label}
+    </button>
+  );
+
+  return (
+    <div style={cardStyle}>
+      <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,.62)', marginBottom: 10 }}>
+        Ready to take the next step?
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+        {ctaBtn('mail', 'Email Me', () => setMode('email'))}
+        {ctaBtn('phone-call', 'Request a Callback', () => setMode('callback'))}
+        <a
+          href={TEL}
+          style={{
+            display: 'flex', alignItems: 'center', gap: 8,
+            width: '100%',
+            background: 'var(--gold-500)',
+            border: 'none',
+            borderRadius: 10, padding: '11px 14px',
+            fontFamily: 'var(--font-display)', fontWeight: 700,
+            fontSize: 13.5, letterSpacing: '.02em',
+            color: '#0E1B33',
+            cursor: 'pointer', textDecoration: 'none',
+            transition: 'background .12s',
+            boxSizing: 'border-box',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = '#b8912f'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--gold-500)'; }}
+        >
+          <Ico name="phone" size={16} c="#0E1B33" />
+          Give Us a Call Now
+        </a>
+      </div>
     </div>
   );
 }
@@ -32,13 +267,14 @@ export function ChatWidget() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [unread, setUnread] = useState(false);
+  const [showCta, setShowCta] = useState(false);
   const bottomRef = useRef(null);
 
   useEffect(() => {
     if (bottomRef.current) {
       bottomRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [messages, loading]);
+  }, [messages, loading, showCta]);
 
   useEffect(() => {
     if (open) setUnread(false);
@@ -60,14 +296,20 @@ export function ChatWidget() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || `Server error ${res.status}`);
       if (!data.content) throw new Error('Empty response');
-      setMessages((prev) => [...prev, { role: 'assistant', content: data.content }]);
+      setMessages((prev) => {
+        const updated = [...prev, { role: 'assistant', content: data.content }];
+        const firstAssistant = updated.findIndex(m => m.role === 'assistant');
+        if (firstAssistant !== -1 && !showCta) setShowCta(true);
+        return updated;
+      });
       if (!open) setUnread(true);
     } catch (err) {
       console.error('Chat error:', err?.message);
       setMessages((prev) => [...prev, {
         role: 'assistant',
-        content: 'I\'m having trouble connecting right now. Please call us directly at ' + PHONE + ' - we\'re available 24/7 and always happy to help.',
+        content: 'I\'m having trouble connecting right now. Please call us directly at ' + PHONE + ' - we\'re available 24/7.',
       }]);
+      setShowCta(true);
     } finally {
       setLoading(false);
     }
@@ -77,6 +319,9 @@ export function ChatWidget() {
     e.preventDefault();
     if (input.trim() && !loading) send(input.trim());
   };
+
+  // Index of the first assistant message
+  const firstAssistantIdx = messages.findIndex(m => m.role === 'assistant');
 
   return (
     <>
@@ -90,6 +335,7 @@ export function ChatWidget() {
           to   { opacity: 1; transform: translateY(0)    scale(1); }
         }
         .sbhg-chat-input::placeholder { color: rgba(255,255,255,.35); }
+        .sbhg-cta-input:focus { border-color: var(--gold-500) !important; }
         @media (max-width: 768px) {
           .sbhg-chat-panel {
             left: 10px !important;
@@ -213,19 +459,26 @@ export function ChatWidget() {
             )}
 
             {messages.map((m, i) => (
-              <div key={i} style={{ display: 'flex', justifyContent: m.role === 'user' ? 'flex-end' : 'flex-start' }}>
-                <div style={{
-                  maxWidth: '82%',
-                  padding: '10px 14px',
-                  borderRadius: m.role === 'user' ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
-                  background: m.role === 'user' ? 'var(--gold-500)' : 'rgba(255,255,255,.09)',
-                  fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.55,
-                  color: m.role === 'user' ? '#fff' : 'rgba(255,255,255,.9)',
-                  whiteSpace: 'pre-wrap', wordBreak: 'break-word',
-                }}>
-                  {m.content}
+              <React.Fragment key={i}>
+                <div style={{ display: 'flex', justifyContent: m.role === 'user' ? 'flex-end' : 'flex-start' }}>
+                  <div style={{
+                    maxWidth: '82%',
+                    padding: '10px 14px',
+                    borderRadius: m.role === 'user' ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
+                    background: m.role === 'user' ? 'var(--gold-500)' : 'rgba(255,255,255,.09)',
+                    fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.55,
+                    color: m.role === 'user' ? '#fff' : 'rgba(255,255,255,.9)',
+                    whiteSpace: 'pre-wrap', wordBreak: 'break-word',
+                  }}>
+                    {m.content}
+                  </div>
                 </div>
-              </div>
+
+                {/* CTA card appears after the first assistant message */}
+                {showCta && i === firstAssistantIdx && (
+                  <CtaCard />
+                )}
+              </React.Fragment>
             ))}
 
             {loading && (
@@ -250,7 +503,7 @@ export function ChatWidget() {
                 className="sbhg-chat-input"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type a message…"
+                placeholder="Type a message..."
                 autoComplete="off"
                 style={{
                   flex: 1, background: 'rgba(255,255,255,.07)',
