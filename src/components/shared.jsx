@@ -433,7 +433,7 @@ export function ChipGrid({ eyebrow, title, intro, items, icon = 'arrow-right', c
       <div className="sbhg-container">
         <SectionHeading eyebrow={eyebrow} align="center">{title}</SectionHeading>
         {intro && <p style={{ ...pStyle, textAlign: 'center', maxWidth: 640, margin: '20px auto 0' }}>{intro}</p>}
-        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 20, marginTop: 44 }}>
+        <div className="sbhg-grid-3" style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 20, marginTop: 44 }}>
           {items.map(([label, desc, href]) => (
             <a key={label} href={href || '#'} style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '22px 24px', background: 'var(--cream-50)', border: '1px solid var(--gray-200)', borderRadius: 'var(--radius-card)', textDecoration: 'none', boxShadow: 'var(--shadow-soft)', transition: 'transform .15s, border-color .15s' }}
               onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.borderColor = 'var(--gold-500)'; }}
