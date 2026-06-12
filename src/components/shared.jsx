@@ -393,7 +393,7 @@ export function CtaStrip() {
    ============================================================ */
 const pStyle = { fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', lineHeight: 1.7, color: 'var(--gray-600)', margin: 0 };
 
-export function SplitFeature({ eyebrow, title, body, bullets = [], cta, ctaHref = '#', slotId, tone = 'dusk', flip = false, bg = 'var(--cream-50)', id }) {
+export function SplitFeature({ eyebrow, title, body, bullets = [], cta, ctaHref = '#', slotId, photoSrc, tone = 'dusk', flip = false, bg = 'var(--cream-50)', id }) {
   const text = (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 22, justifyContent: 'center' }}>
       <SectionHeading eyebrow={eyebrow}>{title}</SectionHeading>
@@ -412,7 +412,7 @@ export function SplitFeature({ eyebrow, title, body, bullets = [], cta, ctaHref 
   );
   const photo = (
     <div style={{ alignSelf: 'center', width: '100%' }}>
-      <Slot id={slotId} h={420} tone={tone} placeholder="Photo coming soon" />
+      <Slot id={slotId} src={photoSrc} h={420} tone={tone} placeholder="Photo coming soon" />
     </div>
   );
   return (

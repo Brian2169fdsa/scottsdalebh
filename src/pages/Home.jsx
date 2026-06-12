@@ -141,14 +141,14 @@ export default function Home() {
         eyebrow="Mental Health" title="Care for the whole you"
         body="Anxiety, depression, trauma — whatever brought you here, you'll find a team that treats the person, not just the diagnosis. Together we build a plan rooted in your goals."
         bullets={['Individual & group therapy', 'Trauma-informed clinicians', 'Psychiatry & medication management']}
-        cta="Explore Mental Health" ctaHref="/mental-health" slotId="home-mh" tone="calm" bg="var(--cream-50)"
+        cta="Explore Mental Health" ctaHref="/mental-health" slotId="home-mh" photoSrc="/assets/mh-care.png" tone="calm" bg="var(--cream-50)"
       />
       <CtaBand />
       <SplitFeature
         eyebrow="Substance Abuse" title="Recovery on your terms"
         body="From detox through aftercare, our continuum meets you wherever you are. No judgment, no shortcuts — just steady, evidence-based support toward a life you choose."
         bullets={['Medically supported detox', 'Relapse-prevention skills', 'Lifelong alumni community']}
-        cta="Explore Substance Abuse" ctaHref="/substance-abuse" slotId="home-sa" tone="canyon" flip bg="var(--white)"
+        cta="Explore Substance Abuse" ctaHref="/substance-abuse" slotId="home-sa" photoSrc="/assets/sa-recovery.png" tone="canyon" flip bg="var(--white)"
       />
       <ValuesRow />
       <Testimonials />
