@@ -88,10 +88,27 @@ export function ChatWidget() {
           to   { opacity: 1; transform: translateY(0)    scale(1); }
         }
         .sbhg-chat-input::placeholder { color: rgba(255,255,255,.35); }
+        @media (max-width: 768px) {
+          .sbhg-chat-panel {
+            left: 10px !important;
+            right: 10px !important;
+            bottom: 86px !important;
+            width: auto !important;
+            max-height: 72dvh !important;
+            border-radius: 16px !important;
+          }
+          .sbhg-chat-btn {
+            bottom: 16px !important;
+            right: 16px !important;
+            width: 54px !important;
+            height: 54px !important;
+          }
+        }
       `}</style>
 
       {/* Floating toggle button */}
       <button
+        className="sbhg-chat-btn"
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? 'Close chat' : 'Open chat'}
         style={{
@@ -118,7 +135,7 @@ export function ChatWidget() {
 
       {/* Chat panel */}
       {open && (
-        <div style={{
+        <div className="sbhg-chat-panel" style={{
           position: 'fixed', bottom: 100, right: 28, zIndex: 9999,
           width: 380, maxHeight: 570,
           background: 'var(--navy-800)',
