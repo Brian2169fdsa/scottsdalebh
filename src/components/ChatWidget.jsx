@@ -58,13 +58,15 @@ export function ChatWidget() {
         body: JSON.stringify({ messages: next }),
       });
       const data = await res.json();
-      const reply = data.content || 'For immediate help, please call us at ' + PHONE + '.';
-      setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
+      if (!res.ok) throw new Error(data.error || `Server error ${res.status}`);
+      if (!data.content) throw new Error('Empty response');
+      setMessages((prev) => [...prev, { role: 'assistant', content: data.content }]);
       if (!open) setUnread(true);
-    } catch {
+    } catch (err) {
+      console.error('Chat error:', err?.message);
       setMessages((prev) => [...prev, {
         role: 'assistant',
-        content: 'Sorry, something went wrong. Please call us directly at ' + PHONE + ' — we\'re available 24/7.',
+        content: 'I\'m having trouble connecting right now. Please call us directly at ' + PHONE + ' — we\'re available 24/7 and always happy to help.',
       }]);
     } finally {
       setLoading(false);
