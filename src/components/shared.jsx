@@ -6,6 +6,7 @@ import {
 } from '../ds/index';
 import { Ico } from './Ico';
 import { Slot } from './Slot';
+import { ChatWidget } from './ChatWidget';
 
 const MARK = '/assets/badge-mark.png';
 const PHONE = '(480) 555‑0100';
@@ -527,6 +528,7 @@ export function Layout({ active, hero, showVerify = true, children }) {
       {children}
       {showVerify && <VerifyForm />}
       <Footer />
+      <ChatWidget />
     </div>
   );
 }

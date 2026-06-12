@@ -10,8 +10,8 @@ const TEL = 'tel:+14805550100';
 
 function HomeHero() {
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', contain: 'strict', height: 660, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--navy-900)', backgroundImage: 'url("/assets/hero-bg.jpg")', backgroundSize: 'cover', backgroundPosition: 'center 30%', backgroundRepeat: 'no-repeat' }}>
-      <div style={{ position: 'absolute', inset: 0, background: 'var(--grad-navy-fade)' }} />
+    <section style={{ position: 'relative', overflow: 'hidden', contain: 'strict', height: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--navy-900)', backgroundImage: 'url("/assets/hero-bg.jpg")', backgroundSize: 'cover', backgroundPosition: 'center 30%', backgroundRepeat: 'no-repeat' }}>
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(14,27,51,0.68) 0%, rgba(14,27,51,0.42) 100%)' }} />
       <Watermark />
       <div className="sbhg-container" style={{ position: 'relative', padding: '0 24px', display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 820, textAlign: 'center', alignItems: 'center' }}>
         <img src={MARK} width={80} height={80} alt="" />
@@ -63,7 +63,7 @@ function IntroBlock() {
 function FullBleedImage() {
   return (
     <section style={{ position: 'relative', width: '100%', height: 900, overflow: 'hidden', contain: 'strict', backgroundColor: 'var(--navy-900)', backgroundImage: 'url("/assets/mh-entrance.jpg")', backgroundSize: 'cover', backgroundPosition: 'center 40%', backgroundRepeat: 'no-repeat' }} aria-label="Recovery statistics">
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(14,27,51,.94) 0%, rgba(14,27,51,.86) 42%, rgba(14,27,51,.6) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(14,27,51,.78) 0%, rgba(14,27,51,.68) 42%, rgba(14,27,51,.4) 100%)' }} />
       <div className="sbhg-container" style={{ position: 'relative', height: '100%', display: 'grid', gridTemplateColumns: '1.4fr 0.6fr', gap: 72, alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 700 }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(28px,2.9vw,42px)', lineHeight: 1.16, textTransform: 'uppercase', letterSpacing: '.05em', color: '#fff', margin: 0 }}>
