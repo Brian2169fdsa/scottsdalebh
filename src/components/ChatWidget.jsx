@@ -27,8 +27,8 @@ function TypingDots() {
 }
 
 function CtaCard({ onEmail, onCallback }) {
-  const [mode, setMode] = useState('buttons'); // buttons | email | callback | done
-  const [form, setForm] = useState({ name: '', email: '', phone: '' });
+  const [mode, setMode] = useState('buttons'); // buttons | email | callback | insurance | done
+  const [form, setForm] = useState({ name: '', email: '', phone: '', insurer: '', memberId: '' });
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
 
@@ -40,6 +40,8 @@ function CtaCard({ onEmail, onCallback }) {
     try {
       const payload = type === 'email'
         ? { type, name: form.name, email: form.email }
+        : type === 'insurance'
+        ? { type, name: form.name, phone: form.phone, insurer: form.insurer, memberId: form.memberId }
         : { type, name: form.name, phone: form.phone };
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -203,6 +205,49 @@ function CtaCard({ onEmail, onCallback }) {
     );
   }
 
+  if (mode === 'insurance') {
+    const valid = form.name.trim() && form.insurer.trim() && form.phone.trim().length >= 7;
+    return (
+      <div style={cardStyle}>
+        <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 14, color: 'var(--gold-300)', marginBottom: 4 }}>
+          Verify Your Insurance
+        </div>
+        <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'rgba(255,255,255,.5)', marginBottom: 12 }}>
+          Free, confidential - no obligation
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <div>
+            <label style={labelStyle}>Your name</label>
+            <input style={inputStyle} value={form.name} onChange={set('name')} placeholder="First name" autoFocus />
+          </div>
+          <div>
+            <label style={labelStyle}>Insurance provider</label>
+            <input style={inputStyle} value={form.insurer} onChange={set('insurer')} placeholder="e.g. Aetna, Cigna, BCBS..." />
+          </div>
+          <div>
+            <label style={labelStyle}>Member ID <span style={{ opacity: .5, fontWeight: 400 }}>(optional)</span></label>
+            <input style={inputStyle} value={form.memberId} onChange={set('memberId')} placeholder="Found on your insurance card" />
+          </div>
+          <div>
+            <label style={labelStyle}>Phone number</label>
+            <input style={inputStyle} type="tel" value={form.phone} onChange={set('phone')} placeholder="We'll call you with results" />
+          </div>
+          {error && <div style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: '#FC8181' }}>{error}</div>}
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button style={btnGhost} onClick={() => setMode('buttons')}>Back</button>
+            <button
+              style={{ ...btnPrimary, opacity: valid && !sending ? 1 : 0.45, cursor: valid && !sending ? 'pointer' : 'not-allowed' }}
+              disabled={!valid || sending}
+              onClick={() => submit('insurance')}
+            >
+              {sending ? 'Submitting...' : 'Check My Benefits'}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // Default: buttons
   const ctaBtn = (icon, label, onClick, gold = false) => (
     <button
@@ -235,6 +280,7 @@ function CtaCard({ onEmail, onCallback }) {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
         {ctaBtn('mail', 'Email Me', () => setMode('email'))}
         {ctaBtn('phone-call', 'Request a Callback', () => setMode('callback'))}
+        {ctaBtn('shield-check', 'Verify My Insurance', () => setMode('insurance'))}
         <a
           href={TEL}
           style={{
