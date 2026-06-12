@@ -19,7 +19,7 @@ function HomeHero() {
           Your path to lasting recovery starts here
         </h1>
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', lineHeight: 1.6, color: 'rgba(255,255,255,.85)', maxWidth: 560, margin: 0 }}>
-          Compassionate, evidence-based behavioral health care in the heart of Scottsdale — built entirely around you.
+          Compassionate, evidence-based behavioral health care in the heart of Scottsdale - built entirely around you.
         </p>
         <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center', marginTop: 6 }}>
           <Button variant="primary" size="lg" href="#verify">Verify Insurance</Button>
@@ -37,7 +37,7 @@ function StatBand() {
       <div className="sbhg-container sbhg-stat-band" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', alignItems: 'center' }}>
         <div style={{ padding: '0 36px' }}><StatBlock value="1 in 5" statement="U.S. adults experience mental illness in a given year." source="Source: NIMH, 2023" /></div>
         <div style={{ padding: '0 36px', borderLeft: '1px solid rgba(201,162,75,.35)', borderRight: '1px solid rgba(201,162,75,.35)' }}><StatBlock value="48.7M" statement="Americans lived with a substance use disorder last year." source="Source: SAMHSA NSDUH, 2022" /></div>
-        <div style={{ padding: '0 36px' }}><StatBlock value="24/7" statement="Admissions support — there is no wrong time to reach out." source="Confidential & always available" /></div>
+        <div style={{ padding: '0 36px' }}><StatBlock value="24/7" statement="Admissions support - there is no wrong time to reach out." source="Confidential & always available" /></div>
       </div>
     </section>
   );
@@ -49,7 +49,7 @@ function IntroBlock() {
       <div className="sbhg-container" style={{ maxWidth: 820, textAlign: 'center', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
         <SectionHeading eyebrow="Why Scottsdale" align="center">A higher standard of care</SectionHeading>
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', lineHeight: 1.7, color: 'var(--gray-600)', margin: 0 }}>
-          You deserve more than a program — you deserve a team that sees you. We pair clinical excellence with genuine warmth, so every step of your recovery feels supported, dignified, and entirely your own.
+          You deserve more than a program - you deserve a team that sees you. We pair clinical excellence with genuine warmth, so every step of your recovery feels supported, dignified, and entirely your own.
         </p>
         <a href={TEL} style={{ display: 'inline-flex', alignItems: 'center', gap: 12, fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 26, color: 'var(--navy-800)', textDecoration: 'none' }}>
           <span style={{ width: 44, height: 44, borderRadius: '50%', border: '1.5px solid var(--gold-500)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-700)' }}><Ico name="phone" size={20} c="var(--gold-700)" /></span>
@@ -67,12 +67,12 @@ function FullBleedImage() {
       <div className="sbhg-container sbhg-fullbleed-grid" style={{ position: 'relative', height: '100%', display: 'grid', gridTemplateColumns: '1.4fr 0.6fr', gap: 72, alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 700 }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(28px,2.9vw,42px)', lineHeight: 1.16, textTransform: 'uppercase', letterSpacing: '.05em', color: '#fff', margin: 0 }}>
-            Recovery isn't rare. 73% of adults who've faced a substance use problem say they're in recovery — or recovered.
+            Recovery isn't rare. 73% of adults who've faced a substance use problem say they're in recovery - or recovered.
           </h2>
           <span style={{ display: 'block', width: 64, height: 3, borderRadius: 2, background: 'var(--grad-gold)' }} />
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,.7)', margin: 0 }}>Source: SAMHSA, National Survey on Drug Use and Health</p>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 16.5, lineHeight: 1.65, color: 'rgba(255,255,255,.9)', margin: '4px 0 0', maxWidth: 620 }}>
-            Mental health and substance use disorders are treatable — and recovery is the most common outcome, not the exception. At Scottsdale Behavioral Health Group, evidence-based care meets genuine compassion, so treatment is built around you, not a template.
+            Mental health and substance use disorders are treatable - and recovery is the most common outcome, not the exception. At Scottsdale Behavioral Health Group, evidence-based care meets genuine compassion, so treatment is built around you, not a template.
           </p>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 16.5, lineHeight: 1.65, color: 'rgba(255,255,255,.9)', margin: 0, maxWidth: 620 }}>
             Our licensed clinicians work with you to address root causes, set clear goals, and build a foundation that lasts long after treatment ends.
@@ -114,7 +114,7 @@ function ProgramsHome() {
     { badge: 'PHP', title: 'Partial Hospitalization', icon: 'sun', body: 'Structured daytime treatment with the comfort of returning home each evening.', href: '/programs#php' },
     { badge: 'IOP', title: 'Intensive Outpatient', icon: 'calendar-clock', body: 'Flexible sessions that fit around work, school, and family life.', href: '/programs#iop' },
     { badge: 'OP', title: 'Outpatient', icon: 'users', body: 'Ongoing therapy and support as you build lasting momentum in recovery.', href: '/programs#outpatient' },
-    { badge: 'E-IOP', title: 'Evening IOP', icon: 'moon', body: 'Evidence-based care that keeps your life moving — evenings, after work.', href: '/programs#evening' },
+    { badge: 'E-IOP', title: 'Evening IOP', icon: 'moon', body: 'Evidence-based care that keeps your life moving - evenings, after work.', href: '/programs#evening' },
   ];
   return (
     <section className="sbhg-section" style={{ background: 'var(--cream-50)' }}>
@@ -139,14 +139,14 @@ export default function Home() {
       <FullBleedImage />
       <SplitFeature
         eyebrow="Mental Health" title="Care for the whole you"
-        body="Anxiety, depression, trauma — whatever brought you here, you'll find a team that treats the person, not just the diagnosis. Together we build a plan rooted in your goals."
+        body="Anxiety, depression, trauma - whatever brought you here, you'll find a team that treats the person, not just the diagnosis. Together we build a plan rooted in your goals."
         bullets={['Individual & group therapy', 'Trauma-informed clinicians', 'Psychiatry & medication management']}
         cta="Explore Mental Health" ctaHref="/mental-health" slotId="home-mh" photoSrc="/assets/mh-care.png" tone="calm" bg="var(--cream-50)"
       />
       <CtaBand />
       <SplitFeature
         eyebrow="Substance Abuse" title="Recovery on your terms"
-        body="From detox through aftercare, our continuum meets you wherever you are. No judgment, no shortcuts — just steady, evidence-based support toward a life you choose."
+        body="From detox through aftercare, our continuum meets you wherever you are. No judgment, no shortcuts - just steady, evidence-based support toward a life you choose."
         bullets={['Medically supported detox', 'Relapse-prevention skills', 'Lifelong alumni community']}
         cta="Explore Substance Abuse" ctaHref="/substance-abuse" slotId="home-sa" photoSrc="/assets/sa-recovery.png" tone="canyon" flip bg="var(--white)"
       />

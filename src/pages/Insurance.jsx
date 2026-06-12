@@ -4,9 +4,9 @@ import { SectionHeading, IconCircle } from '../ds/index';
 import { Ico } from '../components/Ico';
 
 const FAQ = [
-  ['Will my insurance cover treatment?', 'Most major plans cover behavioral health to some degree. The fastest way to know is to verify your benefits — we will confirm coverage, in-network status, and any out-of-pocket estimate, then walk you through exactly what it means.'],
+  ['Will my insurance cover treatment?', 'Most major plans cover behavioral health to some degree. The fastest way to know is to verify your benefits - we will confirm coverage, in-network status, and any out-of-pocket estimate, then walk you through exactly what it means.'],
   ['How do I find out what I owe?', 'Submit the verify-insurance form or call us. With your plan details, we contact your insurer directly and translate the fine print into a plain-language summary of what to expect.'],
-  ['What if my plan is not listed?', "Our payer list is not exhaustive. Even out-of-network, many plans offer meaningful behavioral health benefits — share your information and we'll check."],
+  ['What if my plan is not listed?', "Our payer list is not exhaustive. Even out-of-network, many plans offer meaningful behavioral health benefits - share your information and we'll check."],
   ['What about out-of-pocket costs?', 'We are transparent about cost before you commit to anything. Where insurance leaves a gap, we will discuss flexible options so finances never become the reason you wait.'],
   ['What if I have no insurance?', 'Private pay is available and often allows immediate admission with full personalization and no insurance constraints. Ask our admissions team about cash-pay options.'],
 ];
@@ -17,7 +17,7 @@ function AccessMission() {
       <div className="sbhg-container" style={{ maxWidth: 880, margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
         <SectionHeading eyebrow="Reclaim your future" align="center">Cost should never decide whether you get well</SectionHeading>
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', lineHeight: 1.7, color: 'var(--gray-600)', margin: 0 }}>
-          We work with most major insurers and offer flexible private-pay options — and we handle the paperwork so you can focus on what matters. Verifying your benefits is free, confidential, and carries no obligation.
+          We work with most major insurers and offer flexible private-pay options - and we handle the paperwork so you can focus on what matters. Verifying your benefits is free, confidential, and carries no obligation.
         </p>
       </div>
     </section>
@@ -27,7 +27,7 @@ function AccessMission() {
 function AdmissionSteps() {
   const steps = [
     ['phone-call', 'Reach out', 'Call or submit the form. A real member of our admissions team listens and answers your questions.'],
-    ['file-check', 'Verify benefits', 'We confirm your coverage — usually within one business day — and explain exactly what it means.'],
+    ['file-check', 'Verify benefits', 'We confirm your coverage - usually within one business day - and explain exactly what it means.'],
     ['door-open', 'Begin care', 'With a plan and a start date in hand, your recovery begins. We coordinate everything in between.'],
   ];
   return (
@@ -53,7 +53,7 @@ export default function Insurance() {
   return (
     <Layout active="Insurance" hero={{
       eyebrow: 'Insurance & Admissions', title: 'Getting started is simple', crumb: 'Insurance & Admissions',
-      subtitle: 'Verify your coverage, understand your options, and take the first step — all in one place, all confidential.',
+      subtitle: 'Verify your coverage, understand your options, and take the first step - all in one place, all confidential.',
       slotId: 'ins-hero',
     }}>
       <CtaStrip />
@@ -62,7 +62,7 @@ export default function Insurance() {
       <AdmissionSteps />
       <SplitFeature
         eyebrow="Private pay" title="Care without insurance constraints"
-        body="Choosing to pay privately can mean immediate admission, full flexibility, and a plan shaped entirely around you — no coverage limits dictating your care. We blend in-network and cash-pay options to fit your situation."
+        body="Choosing to pay privately can mean immediate admission, full flexibility, and a plan shaped entirely around you - no coverage limits dictating your care. We blend in-network and cash-pay options to fit your situation."
         bullets={['Immediate admission, when time matters', 'No insurance-driven limits on your plan', 'Premier, fully personalized care']}
         cta="Talk to Admissions" ctaHref="/contact" slotId="ins-private" tone="sand" bg="var(--white)" />
       <FaqAccordion eyebrow="Good to know" title="Insurance, answered" items={FAQ} bg="var(--cream-50)" />

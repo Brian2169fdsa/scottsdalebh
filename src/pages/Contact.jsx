@@ -11,7 +11,7 @@ const CONTACT_ROWS = [
   { icon: 'map-pin', label: 'Visit', value: '[NEEDS-CLIENT] Scottsdale, Arizona' },
   { icon: 'phone', label: 'Call', value: PHONE },
   { icon: 'mail', label: 'Email', value: 'admissions@scottsdalebh.com' },
-  { icon: 'clock', label: 'Hours', value: 'Open 24 / 7 / 365 — admissions support always available' },
+  { icon: 'clock', label: 'Hours', value: 'Open 24 / 7 / 365 - admissions support always available' },
 ];
 
 function ContactSection() {
@@ -22,7 +22,7 @@ function ContactSection() {
         <div>
           <SectionHeading eyebrow="Get in touch">We're here whenever you're ready</SectionHeading>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', lineHeight: 1.7, color: 'var(--gray-600)', margin: '20px 0 32px' }}>
-            Call, email, or send a message — a real member of our admissions team will respond, with no pressure and complete confidentiality.
+            Call, email, or send a message - a real member of our admissions team will respond, with no pressure and complete confidentiality.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
             {CONTACT_ROWS.map((r) => (
@@ -35,7 +35,7 @@ function ContactSection() {
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 32 }}><Slot id="contact-map" h={220} tone="sand" placeholder="Drop a map image — Scottsdale, AZ" /></div>
+          <div style={{ marginTop: 32 }}><Slot id="contact-map" h={220} tone="sand" placeholder="Drop a map image - Scottsdale, AZ" /></div>
         </div>
         <div style={{ background: 'var(--cream-50)', border: '1px solid var(--gray-200)', borderRadius: 'var(--radius-card)', padding: 36, boxShadow: 'var(--shadow-soft)' }}>
           {sent ? (
@@ -103,7 +103,7 @@ function Gallery() {
 export default function Contact() {
   return (
     <Layout active="Contact" showVerify={false} hero={{
-      eyebrow: 'Contact', title: 'Reach out — we answer', crumb: 'Contact',
+      eyebrow: 'Contact', title: 'Reach out - we answer', crumb: 'Contact',
       subtitle: "Open 24/7/365. Whenever you're ready, a real person is here to help you take the next step.",
       slotId: 'contact-hero',
     }}>

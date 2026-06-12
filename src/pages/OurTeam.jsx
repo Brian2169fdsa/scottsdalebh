@@ -7,11 +7,11 @@ const TEAM = [
   { id: 'dr-mara', name: 'Dr. Mara Whitfield, MD', title: 'Medical Director', cred: 'Board-certified Psychiatrist',
     bio: 'Leads psychiatric care and medication management across every level, with two decades treating co-occurring mood and substance use disorders. [NEEDS-CLIENT] Replace with SBHG bio.' },
   { id: 'james-okafor', name: 'James Okafor, LPC', title: 'Chief Clinical Officer · Co-Founder', cred: 'Licensed Professional Counselor',
-    bio: 'Built the clinical model around dignity and evidence — and still runs a weekly group. His own recovery shapes how the whole team shows up. [NEEDS-CLIENT] Replace with SBHG bio.' },
+    bio: 'Built the clinical model around dignity and evidence - and still runs a weekly group. His own recovery shapes how the whole team shows up. [NEEDS-CLIENT] Replace with SBHG bio.' },
   { id: 'elena-cruz', name: 'Elena Cruz, LCSW', title: 'Clinical Director', cred: 'Licensed Clinical Social Worker',
     bio: 'Oversees programming and clinician development, with deep expertise in trauma-informed care and family systems work. [NEEDS-CLIENT] Replace with SBHG bio.' },
   { id: 'marcus-bell', name: 'Marcus Bell', title: 'Chief Executive Officer', cred: 'Healthcare Operations',
-    bio: 'Keeps the lights warm and the standards high — responsible for an experience that feels more like care than process. [NEEDS-CLIENT] Replace with SBHG bio.' },
+    bio: 'Keeps the lights warm and the standards high - responsible for an experience that feels more like care than process. [NEEDS-CLIENT] Replace with SBHG bio.' },
   { id: 'nina-patel', name: 'Nina Patel, PMHNP', title: 'Psychiatric Nurse Practitioner', cred: 'PMHNP-BC',
     bio: 'Partners with clients on medication and stabilization, known for never rushing a conversation. [NEEDS-CLIENT] Replace with SBHG bio.' },
   { id: 'theo-ramirez', name: 'Theo Ramirez, LAC', title: 'Primary Therapist', cred: 'Licensed Associate Counselor',
@@ -19,7 +19,7 @@ const TEAM = [
   { id: 'sara-lindqvist', name: 'Sara Lindqvist, RDN', title: 'Wellness & Nutrition', cred: 'Registered Dietitian',
     bio: 'Brings the body back into recovery through nutrition, fitness, and holistic practice. [NEEDS-CLIENT] Replace with SBHG bio.' },
   { id: 'admissions', name: 'Your Admissions Team', title: 'First Point of Contact', cred: 'Available 24/7',
-    bio: 'The voices you meet first — patient, judgment-free, and ready to help you understand every option. [NEEDS-CLIENT] Replace with SBHG bio.' },
+    bio: 'The voices you meet first - patient, judgment-free, and ready to help you understand every option. [NEEDS-CLIENT] Replace with SBHG bio.' },
 ];
 
 function TeamIntro() {
@@ -28,7 +28,7 @@ function TeamIntro() {
       <div className="sbhg-container" style={{ maxWidth: 880, margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
         <SectionHeading eyebrow="The people behind the care" align="center">Decades of experience, all in your corner</SectionHeading>
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', lineHeight: 1.7, color: 'var(--gray-600)', margin: 0 }}>
-          Recovery is built on relationships. Our clinicians bring [NEEDS-CLIENT] years of combined experience — and a shared belief that you deserve to be treated as a whole person, never a case number.
+          Recovery is built on relationships. Our clinicians bring [NEEDS-CLIENT] years of combined experience - and a shared belief that you deserve to be treated as a whole person, never a case number.
         </p>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
           <Badge variant="outline-gold">Joint Commission Accredited</Badge>
@@ -72,7 +72,7 @@ export default function OurTeam() {
     }}>
       <TeamIntro />
       <TeamGrid />
-      <CtaBand title="Want to meet the team?" body="The best way to know if we're the right fit is to talk. Reach out and we'll set up a conversation — no pressure, complete confidentiality." primary="Verify Insurance" secondary="Contact Us" secondaryHref="/contact" />
+      <CtaBand title="Want to meet the team?" body="The best way to know if we're the right fit is to talk. Reach out and we'll set up a conversation - no pressure, complete confidentiality." primary="Verify Insurance" secondary="Contact Us" secondaryHref="/contact" />
     </Layout>
   );
 }

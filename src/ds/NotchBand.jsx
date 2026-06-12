@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * The Notch Band — gold gradient transition band with the angled chevron
+ * The Notch Band - gold gradient transition band with the angled chevron
  * notch. Place between adjacent dark sections. Max one per viewport.
  */
 export function NotchBand({ height = 40, direction = 'down', style, ...rest }) {

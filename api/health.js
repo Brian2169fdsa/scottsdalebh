@@ -34,7 +34,7 @@ export default async function handler(req, res) {
         ? 'API key is invalid. Double-check the value in Vercel → Settings → Environment Variables.'
         : err.status === 404
         ? 'Model ID not found. Check api/chat.js model name.'
-        : 'Unknown error — see problem field above.',
+        : 'Unknown error - see problem field above.',
     });
   }
 }

@@ -16,7 +16,7 @@ const tdStyle = { padding: '16px 18px', fontSize: 14.5, verticalAlign: 'top' };
 
 function ClinicalFoundation() {
   const cards = [
-    ['book-open', 'Interactive Journaling', 'Our experiential, client-centered core curriculum — you do the work on the page, then bring it to life in group and individual sessions.'],
+    ['book-open', 'Interactive Journaling', 'Our experiential, client-centered core curriculum - you do the work on the page, then bring it to life in group and individual sessions.'],
     ['stethoscope', 'Weekly psychiatry', 'Psychiatric evaluation and medication management, reviewed weekly and adjusted around how you actually feel.'],
     ['clipboard-list', 'Case management', 'Coordinated care and discharge planning so the transition out is as supported as the time inside.'],
     ['flower-2', 'Holistic practices', 'Acupuncture, yoga, and fitness round out a plan that treats the whole person, not just the diagnosis.'],
@@ -26,7 +26,7 @@ function ClinicalFoundation() {
       <div className="sbhg-container">
         <SectionHeading eyebrow="Our clinical foundation" align="center">Method, matched to you</SectionHeading>
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', lineHeight: 1.7, color: 'var(--gray-600)', textAlign: 'center', maxWidth: 680, margin: '20px auto 0' }}>
-          We blend proven modalities — CBT, DBT, ACT, EMDR, motivational interviewing and more — around a consistent clinical spine.
+          We blend proven modalities - CBT, DBT, ACT, EMDR, motivational interviewing and more - around a consistent clinical spine.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 22, marginTop: 48 }}>
           {cards.map(([icon, title, body]) => (
@@ -47,7 +47,7 @@ function GroupSchedule() {
   const rows = [
     ['9:00', 'Mindfulness & Check-In', ['Process group', 'Skills lab', 'Process group', 'Skills lab', 'Process group'], 'M. Reyes, LCSW'],
     ['10:30', 'Core Curriculum', ['CBT', 'DBT', 'ACT', 'Trauma group', 'Relapse prevention'], 'J. Okafor, LPC'],
-    ['12:00', 'Lunch & Reflection', ['—', '—', '—', '—', '—'], ''],
+    ['12:00', 'Lunch & Reflection', ['-', '-', '-', '-', '-'], ''],
     ['1:00', 'Experiential Track', ['Art therapy', 'Yoga', 'Music therapy', 'Fitness', 'Nature group'], 'Holistic team'],
     ['2:30', 'Closing Group', ['Goals', 'Gratitude', 'Goals', 'Gratitude', 'Week in review'], 'Primary therapist'],
   ];
@@ -56,7 +56,7 @@ function GroupSchedule() {
       <div className="sbhg-container">
         <SectionHeading eyebrow="A published rhythm" align="center">Your week, structured for momentum</SectionHeading>
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', lineHeight: 1.7, color: 'var(--gray-600)', textAlign: 'center', maxWidth: 680, margin: '20px auto 36px' }}>
-          A predictable schedule is part of the medicine. Here's an illustrative week — every group is led by a licensed clinician.
+          A predictable schedule is part of the medicine. Here's an illustrative week - every group is led by a licensed clinician.
         </p>
         <div style={{ overflowX: 'auto', borderRadius: 'var(--radius-card)', border: '1px solid var(--gray-200)', boxShadow: 'var(--shadow-soft)', background: 'var(--white)' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 820, fontFamily: 'var(--font-body)' }}>
@@ -74,7 +74,7 @@ function GroupSchedule() {
                     <span style={{ display: 'block', fontFamily: 'var(--font-body)', fontWeight: 400, fontSize: 12, color: 'var(--gray-600)', marginTop: 4 }}>{name}</span>
                   </td>
                   {cells.map((c, ci) => (
-                    <td key={ci} style={{ ...tdStyle, color: c === '—' ? 'var(--gray-200)' : 'var(--ink-900)' }}>{c}</td>
+                    <td key={ci} style={{ ...tdStyle, color: c === '-' ? 'var(--gray-200)' : 'var(--ink-900)' }}>{c}</td>
                   ))}
                 </tr>
               ))}
@@ -88,7 +88,7 @@ function GroupSchedule() {
 
 function EveningCalendar() {
   const rows = [
-    ['Evening IOP', 'Mon · Wed · Thu', '5:30 – 8:30 PM', 'For adults stable at home — relapse prevention & momentum.'],
+    ['Evening IOP', 'Mon · Wed · Thu', '5:30 – 8:30 PM', 'For adults stable at home - relapse prevention & momentum.'],
     ['Family Support Group', 'First Tuesday monthly', '6:00 – 7:30 PM', 'Free, open to loved ones. Held on Zoom.'],
     ['Alumni Night', 'Last Thursday monthly', '6:30 – 8:00 PM', 'Reconnect, celebrate milestones, give back.'],
   ];
@@ -115,13 +115,13 @@ export default function MentalHealth() {
   return (
     <Layout active="Mental Health" hero={{
       eyebrow: 'Mental Health', title: 'Care for the whole you', crumb: 'Mental Health',
-      subtitle: 'Primary mental health treatment for adults — many of whom have no substance-use history at all. Whatever brought you here, we treat the person, not just the diagnosis.',
+      subtitle: 'Primary mental health treatment for adults - many of whom have no substance-use history at all. Whatever brought you here, we treat the person, not just the diagnosis.',
       slotId: 'mh-hero',
     }}>
       <CtaStrip />
       <SplitFeature
         eyebrow="Primary mental health" title="You belong here"
-        body={['Not everyone who needs intensive mental health care has struggled with substances — and you should never feel out of place for seeking help. A large share of the people we treat come to us for depression, anxiety, bipolar, or trauma alone.', "If that's you, you'll find a program designed for exactly this: psychiatric depth, real therapy, and a calm place to get well."]}
+        body={['Not everyone who needs intensive mental health care has struggled with substances - and you should never feel out of place for seeking help. A large share of the people we treat come to us for depression, anxiety, bipolar, or trauma alone.', "If that's you, you'll find a program designed for exactly this: psychiatric depth, real therapy, and a calm place to get well."]}
         bullets={['Adult primary psychiatric care', 'Co-occurring conditions welcome', 'No substance-use history required']}
         cta="Verify Your Coverage" ctaHref="#verify" slotId="mh-intro" tone="calm" bg="var(--white)" />
       <ClinicalFoundation />

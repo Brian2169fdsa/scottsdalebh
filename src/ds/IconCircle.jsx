@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * Outlined gold icon circle (badge-back style). 1.5px gold border, line icon
- * inside — never filled, never multicolor. Pass an icon node as children.
+ * inside - never filled, never multicolor. Pass an icon node as children.
  */
 export function IconCircle({ children, size = 76, onDark = true, style, ...rest }) {
   return (

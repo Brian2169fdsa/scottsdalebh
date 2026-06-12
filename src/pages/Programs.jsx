@@ -17,7 +17,7 @@ function ProgramOverview() {
       <div className="sbhg-container">
         <SectionHeading eyebrow="The full continuum" align="center">One continuum, every level of care</SectionHeading>
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', lineHeight: 1.7, color: 'var(--gray-600)', textAlign: 'center', maxWidth: 680, margin: '20px auto 0' }}>
-          As your needs change, your care steps down with you — never an abrupt ending, always a next step.
+          As your needs change, your care steps down with you - never an abrupt ending, always a next step.
         </p>
         <div className="sbhg-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 22, marginTop: 48 }}>
           {progs.map((p) => (
@@ -62,7 +62,7 @@ function ContinuumList() {
 
 function OutpatientCards() {
   const cards = [
-    ['PHP', 'Partial Hospitalization', 'Full days, 9 AM – 4 PM with a lunch hour. The most structured outpatient option — a true daytime program with evenings at home.'],
+    ['PHP', 'Partial Hospitalization', 'Full days, 9 AM – 4 PM with a lunch hour. The most structured outpatient option - a true daytime program with evenings at home.'],
     ['IOP', 'Intensive Outpatient', 'Three hours a day, mornings (9–12) or afternoons (1–4). Serious structure that still leaves room for work or school.'],
     ['OP', 'Standard Outpatient', 'Four to six hours a week of individual and group therapy. Ongoing support as momentum becomes routine.'],
   ];
@@ -98,19 +98,19 @@ export default function Programs() {
   return (
     <Layout active="Programs" hero={{
       eyebrow: 'Levels of Care', title: 'Programs built around your life', crumb: 'Programs',
-      subtitle: 'From medical detox to evening outpatient, every level of care is part of one continuum — so support flexes with you instead of starting over.',
+      subtitle: 'From medical detox to evening outpatient, every level of care is part of one continuum - so support flexes with you instead of starting over.',
       slotId: 'pr-hero',
     }}>
       <CtaStrip />
       <ProgramOverview />
       <SplitFeature
         id="detox" eyebrow="Medical Detox" title="A safe place to begin"
-        body="Withdrawal from alcohol and many other substances can be medically dangerous without supervision. Our physician-led detox manages it safely, around the clock, with comfort and dignity — then transitions you seamlessly into ongoing care."
+        body="Withdrawal from alcohol and many other substances can be medically dangerous without supervision. Our physician-led detox manages it safely, around the clock, with comfort and dignity - then transitions you seamlessly into ongoing care."
         bullets={['Medically managed withdrawal protocols', '24/7 nursing in a calm, private setting', 'Physician-led care for complex cases']}
         cta="Verify Your Coverage" ctaHref="#verify" slotId="pr-detox" tone="calm" bg="var(--white)" />
       <SplitFeature
         id="stabilization" eyebrow="Mental Health Stabilization" title="Steady ground in a crisis"
-        body="When things reach a breaking point, stabilization provides rapid assessment and a secure, supportive setting to bring you back to a safe baseline — the gateway to the deeper work that follows."
+        body="When things reach a breaking point, stabilization provides rapid assessment and a secure, supportive setting to bring you back to a safe baseline - the gateway to the deeper work that follows."
         bullets={['24-hour crisis intervention team', 'Medication management & monitoring', 'A clear plan for what comes next']}
         cta="Talk to Admissions" ctaHref="/contact" slotId="pr-stab" tone="dusk" flip bg="var(--cream-50)" />
       <SplitFeature
@@ -122,15 +122,15 @@ export default function Programs() {
       <OutpatientSection />
       <SplitFeature
         id="evening" eyebrow="Evening IOP" title="Keep your life moving"
-        body="Built for adults stable enough to live at home, Evening IOP delivers the same evidence-based care after the workday — three nights a week, with relapse-prevention and momentum at its core."
+        body="Built for adults stable enough to live at home, Evening IOP delivers the same evidence-based care after the workday - three nights a week, with relapse-prevention and momentum at its core."
         bullets={['Mon · Wed · Thu, 5:30 – 8:30 PM', 'For full-time workers, students & parents', 'A strong step-down from residential or PHP']}
         cta="Verify Your Coverage" ctaHref="#verify" slotId="pr-evening" tone="canyon" flip bg="var(--cream-50)" />
       <SplitFeature
         id="family" eyebrow="Family Therapy" title="Healing, together"
-        body="You define who counts as family — and we bring them in. Through guided sessions and a monthly support group, the people who love you build the understanding and tools to support your recovery for the long haul."
+        body="You define who counts as family - and we bring them in. Through guided sessions and a monthly support group, the people who love you build the understanding and tools to support your recovery for the long haul."
         bullets={['You choose who is part of the work', 'Internal Family Systems among our methods', 'Monthly family support group on Zoom']}
         cta="Talk to Admissions" ctaHref="/contact" slotId="pr-family" tone="calm" bg="var(--white)" />
-      <CtaBand title="Not sure which level is right?" body="A short conversation with our admissions team is the fastest way to find out. No pressure, no obligation — just clarity." primary="Verify Insurance" secondary="Call Now" secondaryHref="tel:+14805550100" />
+      <CtaBand title="Not sure which level is right?" body="A short conversation with our admissions team is the fastest way to find out. No pressure, no obligation - just clarity." primary="Verify Insurance" secondary="Call Now" secondaryHref="tel:+14805550100" />
       <InsuranceWall />
     </Layout>
   );

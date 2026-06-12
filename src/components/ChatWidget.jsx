@@ -66,7 +66,7 @@ export function ChatWidget() {
       console.error('Chat error:', err?.message);
       setMessages((prev) => [...prev, {
         role: 'assistant',
-        content: 'I\'m having trouble connecting right now. Please call us directly at ' + PHONE + ' — we\'re available 24/7 and always happy to help.',
+        content: 'I\'m having trouble connecting right now. Please call us directly at ' + PHONE + ' - we\'re available 24/7 and always happy to help.',
       }]);
     } finally {
       setLoading(false);

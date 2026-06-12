@@ -189,7 +189,7 @@ export function Header({ active }) {
             <Button variant="primary" size="sm" href="#verify">Verify Insurance</Button>
           </span>
 
-          {/* Hamburger button — mobile only */}
+          {/* Hamburger button - mobile only */}
           <button
             className="sbhg-hamburger"
             aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
@@ -245,7 +245,7 @@ export function Header({ active }) {
             return (
               <div key={n.label} style={{ borderBottom: '1px solid rgba(201,162,75,.15)' }}>
                 {n.cols ? (
-                  /* Parent item with sub-links — accordion */
+                  /* Parent item with sub-links - accordion */
                   <>
                     <button
                       onClick={() => setMobileExpanded(isExpanded ? null : n.label)}
@@ -262,7 +262,7 @@ export function Header({ active }) {
                           onClick={closeDrawer}
                           style={{ display: 'block', padding: '11px 32px', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 13, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--gold-500)', textDecoration: 'none' }}
                         >
-                          View All — {n.label}
+                          View All - {n.label}
                         </Link>
                         {n.cols.map((col) => (
                           <React.Fragment key={col.h}>
@@ -482,7 +482,7 @@ export function ModalitiesGrid({ bg = 'var(--cream-50)', onDark = false }) {
 /* ============================================================
    CTA BAND
    ============================================================ */
-export function CtaBand({ eyebrow = "You don't have to wait", title = 'Reach out today — we\'ll take it from here', body = 'One conversation is all it takes to begin. Our admissions team is standing by, ready to listen.', primary = 'Verify Insurance', primaryHref = '#verify', secondary, secondaryHref = '#' }) {
+export function CtaBand({ eyebrow = "You don't have to wait", title = 'Reach out today - we\'ll take it from here', body = 'One conversation is all it takes to begin. Our admissions team is standing by, ready to listen.', primary = 'Verify Insurance', primaryHref = '#verify', secondary, secondaryHref = '#' }) {
   return (
     <section style={{ position: 'relative', background: 'var(--navy-800)', padding: '92px 0', overflow: 'hidden' }}>
       <Watermark />
@@ -530,7 +530,7 @@ export function FaqAccordion({ eyebrow = 'Good to know', title = 'Common questio
    TESTIMONIALS
    ============================================================ */
 const DEFAULT_TESTIMONIALS = [
-  { name: 'Marcus R.', detail: 'Alumni, 2024', quote: 'The team met me exactly where I was. For the first time in years, I felt genuinely heard — not like a case number.' },
+  { name: 'Marcus R.', detail: 'Alumni, 2024', quote: 'The team met me exactly where I was. For the first time in years, I felt genuinely heard - not like a case number.' },
   { name: 'Dana W.', detail: 'Family member', quote: 'They guided our whole family with patience and honesty. The communication never stopped, and neither did their care.' },
   { name: 'Theo L.', detail: 'Alumni, 2023', quote: 'Calm, dignified, and deeply human. I left with real tools and a community that still checks in on me.' },
 ];
@@ -557,7 +557,7 @@ export function InsuranceWall() {
     <section className="sbhg-section" style={{ background: 'var(--white)' }}>
       <div className="sbhg-container" style={{ textAlign: 'center' }}>
         <SectionHeading eyebrow="Coverage" align="center">Most major insurance accepted</SectionHeading>
-        <p style={{ ...pStyle, maxWidth: 580, margin: '20px auto 0' }}>We'll handle the paperwork. Verify your benefits in minutes — confidentially and with no obligation.</p>
+        <p style={{ ...pStyle, maxWidth: 580, margin: '20px auto 0' }}>We'll handle the paperwork. Verify your benefits in minutes - confidentially and with no obligation.</p>
         <img src="/assets/payers.jpg" alt="Accepted insurance payers" width={1600} height={533} decoding="sync" loading="eager" style={{ display: 'block', width: '100%', maxWidth: 1040, height: 'auto', aspectRatio: '1600 / 533', margin: '48px auto 0' }} />
       </div>
     </section>
@@ -575,7 +575,7 @@ export function VerifyForm() {
         <div>
           <SectionHeading eyebrow="No obligation" onDark>Verify your insurance</SectionHeading>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', color: 'rgba(255,255,255,.78)', lineHeight: 1.7, marginTop: 20 }}>
-            Share a few details and our admissions team will confirm your benefits — usually within one business day. Confidential, always.
+            Share a few details and our admissions team will confirm your benefits - usually within one business day. Confidential, always.
           </p>
           <div style={{ display: 'flex', gap: 10, marginTop: 24, color: 'var(--gold-300)', alignItems: 'center', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 13, letterSpacing: '.06em', textTransform: 'uppercase' }}>
             <Ico name="lock" size={16} c="var(--gold-300)" /> HIPAA-compliant &amp; secure

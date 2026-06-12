@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * Labeled select. Matches Input styling — white field, 8px radius.
+ * Labeled select. Matches Input styling - white field, 8px radius.
  */
 export function Select({
   label,

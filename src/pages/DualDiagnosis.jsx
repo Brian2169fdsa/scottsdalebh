@@ -14,7 +14,7 @@ const DD_DIS = [
 
 function TwoStep() {
   const steps = [
-    ['01', 'search-check', 'Comprehensive assessment', 'We start by understanding the full picture — substance use and mental health together — through medical, psychiatric, and psychosocial evaluation. Nothing about you is treated in isolation.'],
+    ['01', 'search-check', 'Comprehensive assessment', 'We start by understanding the full picture - substance use and mental health together - through medical, psychiatric, and psychosocial evaluation. Nothing about you is treated in isolation.'],
     ['02', 'route', 'A single, personalized plan', 'One integrated team builds one plan that treats both conditions at once. Medication, therapy, and holistic care move in concert, and the plan evolves as you do.'],
   ];
   return (
@@ -42,7 +42,7 @@ function DualPaths() {
       <div className="sbhg-container" style={{ position: 'relative', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
         <SectionHeading eyebrow="Wherever you start" align="center" onDark>Both paths lead to the same team</SectionHeading>
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--body-lg)', color: 'rgba(255,255,255,.78)', maxWidth: 600, margin: 0, lineHeight: 1.65 }}>
-          Whether substances or mental health brought you to this page, you'll be met by clinicians trained to treat both — at the same time.
+          Whether substances or mental health brought you to this page, you'll be met by clinicians trained to treat both - at the same time.
         </p>
         <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center', marginTop: 8 }}>
           <Button variant="primary" size="lg" href="/substance-abuse">Substance Recovery</Button>
@@ -59,7 +59,7 @@ function SuccessStory() {
       <div className="sbhg-container" style={{ maxWidth: 860, margin: '0 auto', textAlign: 'center' }}>
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 80, lineHeight: .8, color: 'var(--gold-500)' }}>{'“'}</span>
         <p style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'clamp(22px,2.6vw,30px)', lineHeight: 1.4, color: 'var(--ink-900)', margin: '8px 0 24px', letterSpacing: '.005em' }}>
-          For years I was told to fix the drinking first, then the depression — or the other way around. Here, both were finally treated as one. That's the first time anything actually held.
+          For years I was told to fix the drinking first, then the depression - or the other way around. Here, both were finally treated as one. That's the first time anything actually held.
         </p>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
           <span style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--navy-800)', color: 'var(--gold-300)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontWeight: 800 }}>R</span>
@@ -77,13 +77,13 @@ export default function DualDiagnosis() {
   return (
     <Layout active="Dual Diagnosis" hero={{
       eyebrow: 'Dual Diagnosis', title: "When it's both, treat both", crumb: 'Dual Diagnosis',
-      subtitle: 'Substance use and mental health conditions so often travel together. We treat them at the same time, with one integrated team — because treating one and ignoring the other rarely works.',
+      subtitle: 'Substance use and mental health conditions so often travel together. We treat them at the same time, with one integrated team - because treating one and ignoring the other rarely works.',
       slotId: 'dd-hero',
     }}>
       <CtaStrip />
       <SplitFeature
         eyebrow="Integrated treatment" title="Co-occurring, by design"
-        body={['A dual diagnosis means a substance use disorder and a mental health condition are present together. Treated separately, each can quietly undo the progress of the other.', 'Our model brings psychiatry, addiction medicine, and therapy into one coordinated plan — so nothing falls through the cracks between two systems.']}
+        body={['A dual diagnosis means a substance use disorder and a mental health condition are present together. Treated separately, each can quietly undo the progress of the other.', 'Our model brings psychiatry, addiction medicine, and therapy into one coordinated plan - so nothing falls through the cracks between two systems.']}
         bullets={['One team for both conditions', 'Continuous monitoring and plan adjustment', 'Addiction medicine + psychiatry under one roof']}
         cta="Verify Your Coverage" ctaHref="#verify" slotId="dd-intro" tone="calm" bg="var(--white)" />
       <TwoStep />
