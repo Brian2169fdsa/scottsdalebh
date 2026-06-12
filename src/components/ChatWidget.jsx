@@ -257,10 +257,15 @@ export function ChatWidget() {
                 <Ico name="send" size={17} c="#0E1B33" />
               </button>
             </form>
-            <div style={{ marginTop: 7, textAlign: 'center', display: 'flex', justifyContent: 'center', gap: 10, alignItems: 'center' }}>
+            <div style={{ marginTop: 7, textAlign: 'center', display: 'flex', justifyContent: 'center', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
               <a href="https://claude.ai" target="_blank" rel="noopener noreferrer"
                 style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'rgba(255,255,255,.3)', textDecoration: 'none' }}>
                 Powered by Claude AI
+              </a>
+              <span style={{ color: 'rgba(255,255,255,.2)', fontSize: 10 }}>·</span>
+              <a href="https://phxcw.com" target="_blank" rel="noopener noreferrer"
+                style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'rgba(255,255,255,.38)', textDecoration: 'none' }}>
+                Built by Phoenix Creative Works
               </a>
               <span style={{ color: 'rgba(255,255,255,.2)', fontSize: 10 }}>·</span>
               <a href={TEL} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--gold-500)', textDecoration: 'none' }}>

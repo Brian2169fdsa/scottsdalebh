@@ -505,9 +505,13 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="sbhg-container" style={{ borderTop: '1px solid rgba(255,255,255,.08)', marginTop: 48, paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+        <div className="sbhg-container" style={{ borderTop: '1px solid rgba(255,255,255,.08)', marginTop: 48, paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
           <span style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'rgba(255,255,255,.5)' }}>© 2026 Scottsdale Behavioral Health Group. AZDHS License #[NEEDS-CLIENT].</span>
           <span style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'rgba(255,255,255,.5)' }}>Privacy Policy · Terms · Accessibility</span>
+          <span style={{ fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'rgba(255,255,255,.38)' }}>
+            Website built by{' '}
+            <a href="https://phxcw.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold-500)', textDecoration: 'none', fontWeight: 600 }}>Phoenix Creative Works</a>
+          </span>
         </div>
       </footer>
       <NotchBand height={26} direction="up" />
