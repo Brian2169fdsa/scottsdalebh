@@ -530,9 +530,9 @@ export function FaqAccordion({ eyebrow = 'Good to know', title = 'Common questio
    TESTIMONIALS
    ============================================================ */
 const DEFAULT_TESTIMONIALS = [
-  { name: 'Marcus R.', detail: 'Alumni, 2024', photo: '/assets/testimonial-marcus.svg', quote: 'The team met me exactly where I was. For the first time in years, I felt genuinely heard - not like a case number.' },
-  { name: 'Dana W.', detail: 'Family member', photo: '/assets/testimonial-dana.svg', quote: 'They guided our whole family with patience and honesty. The communication never stopped, and neither did their care.' },
-  { name: 'Theo L.', detail: 'Alumni, 2023', photo: '/assets/testimonial-theo.svg', quote: 'Calm, dignified, and deeply human. I left with real tools and a community that still checks in on me.' },
+  { name: 'Marcus R.', detail: 'Alumni, 2024', photo: '/assets/testimonial-marcus.png', quote: 'The team met me exactly where I was. For the first time in years, I felt genuinely heard - not like a case number.' },
+  { name: 'Dana W.', detail: 'Family member', photo: '/assets/testimonial-dana.png', quote: 'They guided our whole family with patience and honesty. The communication never stopped, and neither did their care.' },
+  { name: 'Theo L.', detail: 'Alumni, 2023', photo: '/assets/testimonial-theo.png', quote: 'Calm, dignified, and deeply human. I left with real tools and a community that still checks in on me.' },
 ];
 
 export function Testimonials({ data, eyebrow = 'In their words', title = 'Stories of recovery' }) {
